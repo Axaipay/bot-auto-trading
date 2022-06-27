@@ -1,0 +1,62 @@
+{
+  "name": "buy-and-sell-bot-axai",
+  "version": "1.0.0",
+  "description": "Auto trading bot and market maker generation for AxAi-USDN pair",
+  "main": "index.js",
+  "keywords": [
+    "waves",
+    "crypto",
+    "transactions",
+    "protocol",
+    "binary",
+    "cryptography",
+    "signature",
+    "AxAi",
+    "Market",
+    "Exchange",
+    "USDN",
+    "Auto",
+    "Bot",
+    "Trading",
+    "Pair",
+    "Maker"
+  ],
+  "bin": {
+    "axai-bot": "./index.js"
+  },
+  "files": [
+    "/dist",
+    "/src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Axaipay/bot-auto-trading.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start testnet": "node index.js --testnet",
+    "start mainnet": "node index.js --mainnet",
+    "check": "node index.js --check",
+    "help": "node index.js --help",
+    "start": "node index.js",
+    "start log": "node index.js --log=true",
+    "start nolog": "node index.js --log=false",
+    "reset": "node index.js --reset",
+    "edit": "gedit config.json"
+  },
+  "author": {
+    "name": "Diego H. O. R. Antunes",
+    "email": "diegoantunes2301@gmail.com",
+    "url": "https://diegohorantunes.web.app"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@waves/waves-api": "^1.5.1",
+    "@waves/waves-transactions": "^4.2.6",
+    "axios": "^0.27.2",
+    "ccxt": "^1.82.28",
+    "fs": "^0.0.1-security",
+    "node-localstorage": "^2.2.1",
+    "yargs": "^17.5.1"
+  }
+}

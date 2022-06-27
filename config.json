@@ -1,0 +1,11 @@
+{
+    "pairAsset1": "AtR3c6X6q21VGFdtu73PspcCw1pERV4csVS97LHZBbSF",
+    "pairAsset2": "WAVES",
+    "oscillation": 5,
+    "oscillation-mode": "Descending",
+    "price": 11500,
+    "time-in-time": 7500,
+    "nodeUrl": "https://nodes-testnet.wavesnodes.com/",
+    "testnet": true,
+    "seedphrase": "treat switch tuition soap screen unfair retreat squeeze depth daring sustain noble horn biology switch"
+}
