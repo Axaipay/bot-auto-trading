@@ -1,11 +1,13 @@
 {
     "pairAsset1": "AtR3c6X6q21VGFdtu73PspcCw1pERV4csVS97LHZBbSF",
-    "pairAsset2": "WAVES",
+    "pairAsset2": "25FEqEjRkqK6yCkiT7Lz6SAYz7gUFCtxfCChnrVFD5AT",
+    "pairAsset1Decimals": 8,
+    "pairAsset2Decimals":6,
     "oscillation": 5,
-    "oscillation-mode": "Descending",
-    "price": 11500,
+    "oscillation-mode": "Stable_Increasing",
+    "price": 1000000,
     "time-in-time": 7500,
     "nodeUrl": "https://nodes-testnet.wavesnodes.com/",
     "testnet": true,
-    "seedphrase": "<seed-phrase>"
+    "seedphrase": "tone ribbon sample doll settle train install service flee napkin much tiger token proud edge"
 }

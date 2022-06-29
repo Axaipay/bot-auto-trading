@@ -81,6 +81,9 @@ class ConfigValue {
         const anotherSeed = Waves.Seed.fromExistingPhrase(config['seedphrase']);
         return anotherSeed.address
     }
+    static getDecimals(a){
+        return config["pairAsset" + a + "Decimals"]
+    }
 }
 
 module.exports = {

@@ -54,7 +54,7 @@
     "@waves/waves-api": "^1.5.1",
     "@waves/waves-transactions": "^4.2.6",
     "axios": "^0.27.2",
-    "ccxt": "^1.82.28",
+    "ccxt": "^1.89.19",
     "fs": "^0.0.1-security",
     "node-localstorage": "^2.2.1",
     "yargs": "^17.5.1"
