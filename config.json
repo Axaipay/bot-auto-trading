@@ -5,7 +5,7 @@
     "pairAsset2Decimals":6,
     "oscillation": 2, 
     "oscillation-mode": "Increasing",
-    "price": 1000000,
+    "price": 44000000,
     "time-in-time":30000,
     "nodeUrl": "https://nodes-testnet.wavesnodes.com/",
     "testnet": true,
