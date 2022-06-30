@@ -66,7 +66,7 @@ class mode {
                 configj.price = price
                 await writeFile("../config.json", JSON.stringify(configj))
             }else{
-                Trading.cancel(asset1,asset2,order[0].id,keyPair)
+                await Trading.cancel(asset1,asset2,order[0].id,keyPair)
                 this.Increasing();
             }
         }, ConfigValue.time())

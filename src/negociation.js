@@ -170,12 +170,22 @@ class Trading {
       // order(data, seed)
       // return negociation(asset1, asset2,price,amount, matcher, "sell")
     // }
-    static cancel(asset1,asset2,id,keyPair){
-      var cancel = Waves.API.Matcher.cancelOrder(asset1,asset2,id,keyPair)
-      return cancel;
+    static async cancel(asset1,asset2,id,keyPair){
+      axios({
+        method: 'post',
+        url: this.matcherUrl(ConfigValue.modeChain()) + `orderbook/${asset1}/${asset2}/cancelAll#cancelAllInOrderBookWithKey`,
+        headers: {"X-API-KEY": keyPair.publicKey}
+      }).then((s) => {return s})  .catch(async (err) => {
+        var cancel = await Waves.API.Matcher.cancelOrder(asset1,asset2,id,keyPair)
+        .then((s) => {return s})
+        .catch((err) => {if(err.status == "OrderCancelRejected"){return true}})
+        return cancel;
+      })
     }
     static async orders(asset1, asset2, keyPair){
       var orderss = await Waves.API.Matcher.getOrders(asset1, asset2, keyPair)
+      .then((r) => {return r})
+      .catch((er) => {return false})
       return orderss;
     }
     static matcherKey(t){
@@ -183,7 +193,10 @@ class Trading {
       return m
     }
     static network(f){
-      return f == "8QUAqtTckM5B8gvcuP7mMswat9SjKUuafJMusEoSn1Gy" ? "T" : "M"
+      return f ? "T" : "M"
+    }
+    static matcherUrl(k){
+      return k ? "https://matcher-testnet.waves.exchange/matcher/" : "https://matcher.waves.exchange/matcher/"
     }
     static getAssetBytes (currencyId) {
       if (currencyId === 'WAVES') {
@@ -226,7 +239,7 @@ class Trading {
     //     amount: amount,
     //     buyMatcherFee: 1400000,
     //     sellMatcherFee: 1400000,
-    //     chainId: this.network(matcher),
+    //     chainId: this.network(ConfigValue.modechain()),
     //     fee: 700000,
     //   }
     //   return tx;
