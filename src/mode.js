@@ -42,7 +42,7 @@ class mode {
         setInterval(async ()=> {
             var order = await Trading.orders(asset1,asset2,keyPair)
             console.log(order)
-            if(JSON.stringify(order) == "[]" || (order[0].status != 'Accepted' && order[0].status != "PartiallyFilled")){ 
+            if(JSON.stringify(order) == "[]" || order == undefined || order == false || order == null || order == "" || order == true || (order[0].status != 'Accepted' && order[0].status != "PartiallyFilled")){ 
                 var price = parseInt(ConfigValue.price() - (ConfigValue.price() * ConfigValue.oscillation() / 100))
                 var buy = await Trading.trade(asset1,asset2,price,100000000,"buy")
                 var sell = await Trading.trade(asset1,asset2,price,100000000,"sell")
@@ -58,7 +58,7 @@ class mode {
     static Increasing(){
         setInterval(async ()=> {
             var order = await Trading.orders(asset1,asset2,keyPair)
-            if(JSON.stringify(order) == "[]" || (order[0].status != 'Accepted' && order[0].status != "PartiallyFilled")){ 
+            if(JSON.stringify(order) == "[]" || order == undefined || order == false || order == null || order == "" || order == true || (order[0].status != 'Accepted' && order[0].status != "PartiallyFilled")){ 
                 var price = parseInt(ConfigValue.price() + (ConfigValue.price() * ConfigValue.oscillation() / 100))
                 var buy = await Trading.trade(asset1,asset2,price,100000000,"buy")
                 var sell = await Trading.trade(asset1,asset2,price,100000000,"sell")
@@ -74,7 +74,7 @@ class mode {
     static Stable(){
         setInterval(async ()=> {
             var order = await Trading.orders(asset1,asset2,keyPair)
-            if(JSON.stringify(order) == "[]" || (order[0].status != 'Accepted' && order[0].status != "PartiallyFilled")){ 
+            if(JSON.stringify(order) == "[]" || order == undefined || order == false || order == null || order == "" || order == true || (order[0].status != 'Accepted' && order[0].status != "PartiallyFilled")){ 
                 var price = parseInt(ConfigValue.price())
                 var buy = await Trading.trade(asset1,asset2,price,100000000,"buy")
                 var sell = await Trading.trade(asset1,asset2,price,100000000,"sell")
@@ -91,7 +91,7 @@ class mode {
     static Stable_Descending(){
         setInterval(async ()=> {
             var order = await Trading.orders(asset1,asset2,keyPair)
-            if(JSON.stringify(order) == "[]" || (order[0].status != 'Accepted' && order[0].status != "PartiallyFilled")){ 
+            if(JSON.stringify(order) == "[]" || order == undefined || order == false || order == null || order == "" || order == true || (order[0].status != 'Accepted' && order[0].status != "PartiallyFilled")){ 
                 var price = parseInt(ConfigValue.price() - (ConfigValue.price() * ConfigValue.oscillation() / 100))
                 var buy = await Trading.trade(asset1,asset2,price,100000000,"buy")
                 var sell = await Trading.trade(asset1,asset2,price,100000000,"sell")
@@ -108,7 +108,7 @@ class mode {
     static Stable_Increasing(){
         setInterval(async ()=> {
             var order = await Trading.orders(asset1,asset2,keyPair)
-            if(JSON.stringify(order) == "[]" || (order[0].status != 'Accepted' && order[0].status != "PartiallyFilled")){ 
+            if(JSON.stringify(order) == "[]" || order == undefined || order == false || order == null || order == "" || order == true || (order[0].status != 'Accepted' && order[0].status != "PartiallyFilled")){ 
                 var price = parseInt(ConfigValue.price() + (ConfigValue.price() * ConfigValue.oscillation() / 100))
                 var buy = await Trading.trade(asset1,asset2,price,100000000,"buy")
                 var sell = await Trading.trade(asset1,asset2,price,100000000,"sell")
