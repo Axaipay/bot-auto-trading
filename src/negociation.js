@@ -185,7 +185,7 @@ class Trading {
     static async orders(asset1, asset2, keyPair){
       var orderss = await Waves.API.Matcher.getOrders(asset1, asset2, keyPair)
       .then((r) => {return r})
-      .catch((er) => {return false})
+      .catch((er) => {return [{status: "Pending"}]})
       return orderss;
     }
     static matcherKey(t){
