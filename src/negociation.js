@@ -40,7 +40,7 @@ const encoded = require("../wavesechange/base/functions/encode.js")
 
 class Trading {
     // static async trade(asset1, asset2,price,amount,seed, matcher, node, type){
-    static async trade(asset1, asset2,price,amount, type){
+    static async trade(asset1, asset2,amount, type){
       const matcher = this.matcherKey(ConfigValue.modeChain())
       const url = ConfigValue.modeChain() ? "https://matcher-testnet.waves.exchange/" : "https://matcher.waves.exchange/"
       // const tx1 = {
@@ -102,21 +102,23 @@ class Trading {
       // var data = (type == "buy" ? order(tx1, ConfigValue.seed()) : order(tx2, ConfigValue.seed()))
       const paramsBuy = {
         amount: amount, //1 waves
-        price: price, //for 0.00000010 BTC
+        price: ConfigValue.amountSale(), //for 0.00000010 BTC
         priceAsset: asset2,
         matcherPublicKey: matcher,
         orderType: type,
         amountAsset: asset1,
-        matcherFee: 1400000
+        matcherFeeAssetId: ConfigValue.feeAssetId(),
+        matcherFee: ConfigValue.feeAmount()
       }
       const paramsSell = {
         amount: amount, //1 waves
-        price: price, //for 0.00000010 BTC
+        price: ConfigValue.amountSale(), //for 0.00000010 BTC
         amountAsset: asset1,
         priceAsset: asset2,
         matcherPublicKey: matcher,
         orderType: type,
-        matcherFee: 1400000
+        matcherFeeAssetId: ConfigValue.feeAssetId(),
+        matcherFee: ConfigValue.feeAmount()
       }
       // var data = order({
       //   "senderPublicKey": ConfigValue.key().publicKey,

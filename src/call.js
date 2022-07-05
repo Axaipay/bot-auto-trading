@@ -41,11 +41,16 @@ class call{
     static check(){
         validate(ConfigValue.pair('1'),"pairAsset1: String - ")
         validate(ConfigValue.pair('2'), "pairAsset2: String - ")
+        validate(ConfigValue.getDecimals("1"), "pairAsset1Decimals: Int - ")
+        validate(ConfigValue.getDecimals("2"), "pairAsset2Decimals: Int - ")
         validate(ConfigValue.oscillation(), "oscillation: Int - ")
         validate(ConfigValue.mode(), "oscillation-mode: String - ")
         // validate(ConfigValue.fee(), "feePrice: Int - ")
         // validate(ConfigValue.feeId(), "feeId: String - ")
         validate(ConfigValue.price(), "price: Int - ")
+        validate(ConfigValue.amountSale(), "amountSale: Int - ")
+        validate(ConfigValue.feeAssetId(), "FeeAssetId: String - ")
+        validate(ConfigValue.feeAmount(), "amountFee: Int - ")
         // validate(ConfigValue.fluctuation(), "percentage-fluctuation: Int - ")
         validate(ConfigValue.time(), "time-in-time: Int - ")
         validate(ConfigValue.node(), "nodeUrl: String - ")
@@ -60,11 +65,16 @@ class call{
         var newData = {
             "pairAsset1": "<assetId1>",
             "pairAsset2": "<assetId2>",
+            "pairAsset1Decimals": "<asset1_decimals>",
+            "pairAsset2Decimals": "<asset2_decimals>",
             "oscillation": 5,
             "oscillation-mode": "stable",
             // "feeId": "WAVES",
             // "feePrice": 0.01,
             "price": 0.000115,
+            "amountSale": 100000000,
+            "FeeAssetId": "WAVES",
+            "amountFee": 1400000,
             // "percentage-fluctuation": 1,
             "time-in-time": 7200,
             "nodeUrl": "http://nodes.wavesnodes.com/",

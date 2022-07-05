@@ -1,13 +1,16 @@
 {
-    "pairAsset1": "AtR3c6X6q21VGFdtu73PspcCw1pERV4csVS97LHZBbSF",
-    "pairAsset2": "25FEqEjRkqK6yCkiT7Lz6SAYz7gUFCtxfCChnrVFD5AT",
+    "pairAsset1": "A4tvKLB66QMmSJPXJgiajNnrtSjvqAapxTqhLzJbBNFX",
+    "pairAsset2": "DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p",
     "pairAsset1Decimals": 8,
     "pairAsset2Decimals":6,
     "oscillation": 2, 
     "oscillation-mode": "Increasing",
-    "price": 44000000,
-    "time-in-time":30000,
-    "nodeUrl": "https://nodes-testnet.wavesnodes.com/",
-    "testnet": true,
-    "seedphrase": "tone ribbon sample doll settle train install service flee napkin much tiger token proud edge"
+    "price":93800000000,
+    "amountSale": 1065,
+    "FeeAssetId": "Atqv59EYzjFGuitKVnMRk6H8FukjoV3ktPorbEys25on",
+    "amountFee": 2060856,
+    "time-in-time":3600000,
+    "nodeUrl": "https://nodes.wavesnodes.com/",
+    "testnet": false,
+    "seedphrase": "brush crisp recipe deer panic torch share sustain liquid sell aim sock jealous language aim sock"
 }

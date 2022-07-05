@@ -84,6 +84,15 @@ class ConfigValue {
     static getDecimals(a){
         return config["pairAsset" + a + "Decimals"]
     }
+    static amountSale(){
+        return config["amountSale"]
+    }
+    static feeAssetId(){
+        return config["FeeAssetId"]
+    }
+    static feeAmount(){
+        return config["amountFee"]
+    }
 }
 
 module.exports = {
