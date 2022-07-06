@@ -6,11 +6,11 @@
     "oscillation": 2, 
     "oscillation-mode": "Increasing",
     "price":93800000000,
-    "amountSale": 1065,
+    "amountSale": 1045,
     "FeeAssetId": "Atqv59EYzjFGuitKVnMRk6H8FukjoV3ktPorbEys25on",
     "amountFee": 2060856,
-    "time-in-time":3600000,
+    "time-in-time":3600,
     "nodeUrl": "https://nodes.wavesnodes.com/",
     "testnet": false,
-    "seedphrase": "brush crisp recipe deer panic torch share sustain liquid sell aim sock jealous language aim sock"
+    "seedphrase": "brush crisp recipe deer panic torch share sustain liquid sell aim sock jealous language van"
 }

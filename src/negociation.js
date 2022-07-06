@@ -101,6 +101,7 @@ class Trading {
       // };
       // var data = (type == "buy" ? order(tx1, ConfigValue.seed()) : order(tx2, ConfigValue.seed()))
       const paramsBuy = {
+        version: 3,
         amount: amount, //1 waves
         price: ConfigValue.amountSale(), //for 0.00000010 BTC
         priceAsset: asset2,
@@ -111,6 +112,7 @@ class Trading {
         matcherFee: ConfigValue.feeAmount()
       }
       const paramsSell = {
+        version: 3,
         amount: amount, //1 waves
         price: ConfigValue.amountSale(), //for 0.00000010 BTC
         amountAsset: asset1,
