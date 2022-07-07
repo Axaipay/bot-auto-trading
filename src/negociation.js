@@ -40,7 +40,7 @@ const encoded = require("../wavesechange/base/functions/encode.js")
 
 class Trading {
     // static async trade(asset1, asset2,price,amount,seed, matcher, node, type){
-    static async trade(asset1, asset2,amount, type){
+    static async trade(asset1, asset2,amount, type,nn){
       const matcher = this.matcherKey(ConfigValue.modeChain())
       const url = ConfigValue.modeChain() ? "https://matcher-testnet.waves.exchange/" : "https://matcher.waves.exchange/"
       // const tx1 = {
@@ -103,7 +103,7 @@ class Trading {
       const paramsBuy = {
         version: 3,
         amount: amount, //1 waves
-        price: ConfigValue.amountSale(), //for 0.00000010 BTC
+        price: ConfigValue.amountSale(nn), //for 0.00000010 BTC
         priceAsset: asset2,
         matcherPublicKey: matcher,
         orderType: type,
@@ -114,7 +114,7 @@ class Trading {
       const paramsSell = {
         version: 3,
         amount: amount, //1 waves
-        price: ConfigValue.amountSale(), //for 0.00000010 BTC
+        price: ConfigValue.amountSale(nn), //for 0.00000010 BTC
         amountAsset: asset1,
         priceAsset: asset2,
         matcherPublicKey: matcher,

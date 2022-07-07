@@ -11,21 +11,32 @@ const fs = require('fs')
 function validate(k,n){ if(k === undefined || k === null || k === '' ){console.error(n + "no parameter or invalid parameter");return false} else {return true;}} 
 
 function startBot(){
+    var n = ConfigValue.totalPair();
     switch(ConfigValue.mode()){
         case 'Descending':
-            mode.Descending()
+            for(i = 0; i <= n; i++) {
+                mode.Descending(i)
+            }
         break;
-        case 'Increasing': 
-            mode.Increasing()
+        case 'Increasing':
+            for(i = 0; i <= n; i++) {
+                mode.Increasing(i)
+            }
         break;
         case 'Stable':
-            mode.Stable()
+            for(i = 0; i <= n; i++) {
+                mode.Stable(i)
+            }
         break;
         case 'Stable_Descending':
-            mode.Stable_Descending()
+            for(i = 0; i <= n; i++) {
+                mode.Stable_Descending(i)
+            }
         break;
         case 'Stable_Increasing':
-            mode.Stable_Increasing()
+            for(i = 0; i <= n; i++) {
+                mode.Stable_Increasing(i)
+            }
         break;
         default:
             console.log(ConfigValue.mode())

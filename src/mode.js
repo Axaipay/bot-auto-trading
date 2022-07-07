@@ -33,91 +33,87 @@ const {writeFile, readFile } = require("fs").promises;
 // const address = ConfigValue.address()
 const keyPair = ConfigValue.key()
 
-//assets for order
-const asset1 = ConfigValue.pair("1")
-const asset2 = ConfigValue.pair("2")
-
 class mode {
-    static Descending(){
+    static Descending(nn){
         setInterval(async ()=> {
-            var order = await Trading.orders(asset1,asset2,keyPair)
+            var order = await Trading.orders(ConfigValue.pair("1",nn),ConfigValue.pair("2",nn),keyPair)
             console.log(order)
             if(JSON.stringify(order) == "[]" || order == undefined || order == false || order == null || order == "" || order == true || (order[0].status != 'Accepted' && order[0].status != "PartiallyFilled")){ 
-                var price = parseInt(ConfigValue.price() - (ConfigValue.price() * ConfigValue.oscillation() / 100))
-                var buy = await Trading.trade(asset1,asset2,price,"buy")
-                var sell = await Trading.trade(asset1,asset2,price,"sell")
+                var price = parseInt(ConfigValue.price(nn) - (ConfigValue.price(nn) * ConfigValue.oscillation(nn) / 100))
+                var buy = await Trading.trade(ConfigValue.pair("1",nn),ConfigValue.pair("2",nn),price,"buy",nn)
+                var sell = await Trading.trade(ConfigValue.pair("1",nn),ConfigValue.pair("2",nn),price,"sell",nn)
                 console.log(`Trading successful - Sell Id: ${sell.id}, Buy Id: ${buy.id}`)
                 configj.price = price;
                 await writeFile("../config.json", JSON.stringify(configj))
             }else{
-                Trading.cancel(asset1,asset2,order[0].id,keyPair)
+                Trading.cancel(ConfigValue.pair("1",nn),ConfigValue.pair("2",nn),order[0].id,keyPair)
                 this.Descending();
             }
         }, ConfigValue.time())
     }
-    static Increasing(){
+    static Increasing(nn){
         setInterval(async ()=> {
-            var order = await Trading.orders(asset1,asset2,keyPair)
+            var order = await Trading.orders(ConfigValue.pair("1",nn),ConfigValue.pair("2",nn),keyPair)
             if(JSON.stringify(order) == "[]" || order == undefined || order == false || order == null || order == "" || order == true || (order[0].status != 'Accepted' && order[0].status != "PartiallyFilled")){ 
-                var price = parseInt(ConfigValue.price() + (ConfigValue.price() * ConfigValue.oscillation() / 100))
-                var buy = await Trading.trade(asset1,asset2,price,"buy")
-                var sell = await Trading.trade(asset1,asset2,price,"sell")
+                var price = parseInt(ConfigValue.price(nn) + (ConfigValue.price(nn) * ConfigValue.oscillation(nn) / 100))
+                var buy = await Trading.trade(ConfigValue.pair("1",nn),ConfigValue.pair("2",nn),price,"buy",nn)
+                var sell = await Trading.trade(ConfigValue.pair("1",nn),ConfigValue.pair("2",nn),price,"sell",nn)
                 console.log(`Trading successful - Sell Id: ${sell.id}, Buy Id: ${buy.id}`)
                 configj.price = price
                 await writeFile("../config.json", JSON.stringify(configj))
             }else{
-                await Trading.cancel(asset1,asset2,order[0].id,keyPair)
+                await Trading.cancel(ConfigValue.pair("1",nn),ConfigValue.pair("2",nn),order[0].id,keyPair)
                 this.Increasing();
             }
         }, ConfigValue.time())
     }
-    static Stable(){
+    static Stable(nn){
         setInterval(async ()=> {
-            var order = await Trading.orders(asset1,asset2,keyPair)
+            var order = await Trading.orders(ConfigValue.pair("1",nn),ConfigValue.pair("2",nn),keyPair)
             if(JSON.stringify(order) == "[]" || order == undefined || order == false || order == null || order == "" || order == true || (order[0].status != 'Accepted' && order[0].status != "PartiallyFilled")){ 
-                var price = parseInt(ConfigValue.price())
-                var buy = await Trading.trade(asset1,asset2,price,"buy")
-                var sell = await Trading.trade(asset1,asset2,price,"sell")
+                var price = parseInt(ConfigValue.price(nn))
+                var buy = await Trading.trade(ConfigValue.pair("1",nn),ConfigValue.pair("2",nn),price,"buy",nn)
+                var sell = await Trading.trade(ConfigValue.pair("1",nn),ConfigValue.pair("2",nn),price,"sell",nn)
                 console.log(`Trading successful - Sell Id: ${sell.id}, Buy Id: ${buy.id}`)
                 configj.price = price
                 await writeFile("../config.json", JSON.stringify(configj))
 
             }else{
-                Trading.cancel(asset1,asset2,order[0].id,keyPair)
+                Trading.cancel(ConfigValue.pair("1",nn),ConfigValue.pair("2",nn),order[0].id,keyPair)
                 this.Stable();
             }
         }, ConfigValue.time())
     }
-    static Stable_Descending(){
+    static Stable_Descending(nn){
         setInterval(async ()=> {
-            var order = await Trading.orders(asset1,asset2,keyPair)
+            var order = await Trading.orders(ConfigValue.pair("1",nn),ConfigValue.pair("2",nn),keyPair)
             if(JSON.stringify(order) == "[]" || order == undefined || order == false || order == null || order == "" || order == true || (order[0].status != 'Accepted' && order[0].status != "PartiallyFilled")){ 
-                var price = parseInt(ConfigValue.price() - (ConfigValue.price() * ConfigValue.oscillation() / 100))
-                var buy = await Trading.trade(asset1,asset2,price,"buy")
-                var sell = await Trading.trade(asset1,asset2,price,"sell")
+                var price = parseInt(ConfigValue.price(nn) - (ConfigValue.price(nn) * ConfigValue.oscillation(nn) / 100))
+                var buy = await Trading.trade(ConfigValue.pair("1",nn),ConfigValue.pair("2",nn),price,"buy",nn)
+                var sell = await Trading.trade(ConfigValue.pair("1",nn),ConfigValue.pair("2",nn),price,"sell",nn)
                 console.log(`Trading successful - Sell Id: ${sell.id}, Buy Id: ${buy.id}`)
-                var buy1 = await Trading.trade(asset1,asset2,ConfigValue.price(),"buy")
-                var sell1 = await Trading.trade(asset1,asset2,ConfigValue.price(),"sell")
+                var buy1 = await Trading.trade(ConfigValue.pair("1",nn),ConfigValue.pair("2",nn),ConfigValue.price(nn),"buy",nn)
+                var sell1 = await Trading.trade(ConfigValue.pair("1",nn),ConfigValue.pair("2",nn),ConfigValue.price(nn),"sell",nn)
                 console.log(`Trading successful - Sell Id: ${sell1.id}, Buy Id: ${buy1.id}`)
             }else{
-                Trading.cancel(asset1,asset2,order[0].id,keyPair)
+                Trading.cancel(ConfigValue.pair("1",nn),ConfigValue.pair("2",nn),order[0].id,keyPair)
                 this.Stable_Descending();
             }
         }, ConfigValue.time())
     }
-    static Stable_Increasing(){
+    static Stable_Increasing(nn){
         setInterval(async ()=> {
-            var order = await Trading.orders(asset1,asset2,keyPair)
+            var order = await Trading.orders(ConfigValue.pair("1",nn),ConfigValue.pair("2",nn),keyPair)
             if(JSON.stringify(order) == "[]" || order == undefined || order == false || order == null || order == "" || order == true || (order[0].status != 'Accepted' && order[0].status != "PartiallyFilled")){ 
-                var price = parseInt(ConfigValue.price() + (ConfigValue.price() * ConfigValue.oscillation() / 100))
-                var buy = await Trading.trade(asset1,asset2,price,"buy")
-                var sell = await Trading.trade(asset1,asset2,price,"sell")
+                var price = parseInt(ConfigValue.price(nn) + (ConfigValue.price(nn) * ConfigValue.oscillation(nn) / 100))
+                var buy = await Trading.trade(ConfigValue.pair("1",nn),ConfigValue.pair("2",nn),price,"buy",nn)
+                var sell = await Trading.trade(ConfigValue.pair("1",nn),ConfigValue.pair("2",nn),price,"sell",nn)
                 console.log(`Trading successful - Sell Id: ${sell.id}, Buy Id: ${buy.id}`)
-                var buy1 = await Trading.trade(asset1,asset2,ConfigValue.price(),"buy")
-                var sell1 = await Trading.trade(asset1,asset2,ConfigValue.price(),"sell")
+                var buy1 = await Trading.trade(ConfigValue.pair("1",nn),ConfigValue.pair("2",nn),ConfigValue.price(nn),"buy",nn)
+                var sell1 = await Trading.trade(ConfigValue.pair("1",nn),ConfigValue.pair("2",nn),ConfigValue.price(nn),"sell",nn)
                 console.log(`Trading successful - Sell Id: ${sell1.id}, Buy Id: ${buy1.id}`)
             }else{
-                Trading.cancel(asset1,asset2,order[0].id,keyPair)
+                Trading.cancel(ConfigValue.pair("1",nn),ConfigValue.pair("2",nn),order[0].id,keyPair)
                 this.Stable_Increasing();
             }
         }, ConfigValue.time())
